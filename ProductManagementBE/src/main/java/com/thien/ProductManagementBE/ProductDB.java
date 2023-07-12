@@ -3,6 +3,8 @@ package com.thien.ProductManagementBE;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductDB extends JpaRepository<Product, Integer> {
 
@@ -74,4 +76,9 @@ public interface ProductDB extends JpaRepository<Product, Integer> {
 //    Springboot Approach
     Product findByName(String name);
 
+    List<Product> findByType(String type);
+
+    List<Product> findByPlace(String place);
+
+    List<Product> findByWarranty(int warranty);
 }

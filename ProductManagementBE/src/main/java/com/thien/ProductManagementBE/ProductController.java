@@ -26,4 +26,34 @@ public class ProductController {
         service.addProduct(p);
     }
 
+    @GetMapping("/product/id/{id}")
+    public Product getProductById(@PathVariable int id) {
+        return service.getProductById(id);
+    }
+
+    @GetMapping("/products/type/{type}")
+    public List<Product> getProductsByType(@PathVariable String type) {
+        return service.getProductsByType(type);
+    }
+
+    @GetMapping("/products/place/{place}")
+    public List<Product> getProductsByPlace(@PathVariable String place) {
+        return service.getProductsByPlace(place);
+    }
+
+    @GetMapping("/products/warranty/{warranty}")
+    public List<Product> getProductsByWarranty(@PathVariable int warranty) {
+        return service.getProductsByWarranty(warranty);
+    }
+
+    @PutMapping("/product")
+    public void updateProduct(@RequestBody Product p) {
+        service.updateProduct(p);
+    }
+
+    @DeleteMapping("/product/{id}")
+    public void deleteProduct(@PathVariable int id) {
+        service.deleteProduct(id);
+    }
+
 }

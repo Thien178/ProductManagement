@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -64,14 +65,41 @@ public class ProductService {
 
     @Autowired
     ProductDB db;
+
     public void addProduct(Product p){
         db.save(p);
     }
     public List<Product> getAllProducts() {
         return db.findAll();
     }
+
     public Product getProduct(String name){
         return db.findByName(name);
+    }
+
+    public Product getProductById(int id) {
+        Optional<Product> optionalProduct = db.findById(id);
+        return optionalProduct.orElse(null);
+    }
+
+    public List<Product> getProductsByType(String type) {
+        return db.findByType(type);
+    }
+
+    public List<Product> getProductsByPlace(String place) {
+        return db.findByPlace(place);
+    }
+
+    public List<Product> getProductsByWarranty(int warranty) {
+        return db.findByWarranty(warranty);
+    }
+
+    public void updateProduct(Product p) {
+        db.save(p);
+    }
+
+    public void deleteProduct(int id) {
+        db.deleteById(id);
     }
 
 
